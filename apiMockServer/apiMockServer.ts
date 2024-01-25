@@ -11,10 +11,11 @@ const ORDERS_LENGTH = 103
 
 const createOrderMock = (index: number): IOrder => {
   return {
+    id: `${index}`,
     name: `Газель фермер - ${index}`,
-    mainImage: '/images/ab8921d404ca009a1b027f8b37375120.png',
+    mainImage: `${ORIGIN}/images/ab8921d404ca009a1b027f8b37375120.png`,
     price: {
-      forHour: 500,
+      forHour: Math.round(Math.random() * 500),
     },
     route: {
       date: '2024-01-25T15:17:34.791Z',
@@ -22,6 +23,18 @@ const createOrderMock = (index: number): IOrder => {
         city: 'Екатеринбург'
       },
       to: undefined
+    },
+    cargo: {
+      types: [
+        { name: 'Личные вещи' },
+        { name: 'Стройматериалы' },
+        { name: 'Техника и оборудование' },
+        { name: 'Техника и оборудование' },
+        { name: 'Техника и оборудование' },
+        { name: 'Техника и оборудование' },
+        { name: 'Техника и оборудование' },
+        { name: 'Техника и оборудование' },
+      ].slice(0, Math.round(Math.random() * 8))
     }
   }
 }
@@ -72,7 +85,7 @@ const createServerHandlers = (res: Res, url: URL) => {
       const start = Number(startParam) || 0
       const end = Number(endParam) || Infinity
 
-      handleApiResponse({ orders: orders.slice(start, end), total: orders.length})
+      handleApiResponse({ orders: orders.slice(start, end), total: orders.length })
     } else {
       handleApiResponse(orders)
     }

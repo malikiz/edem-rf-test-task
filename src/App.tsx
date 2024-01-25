@@ -1,5 +1,5 @@
-import Home from "./containers/Home/Home";
-import Header from "./views/Header/Header";
+import Home from "./components/containers/Home/Home";
+import Header from "./components/views/Header/Header";
 
 function App() {
   return (

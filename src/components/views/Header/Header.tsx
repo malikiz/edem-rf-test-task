@@ -1,5 +1,5 @@
-import MessageIcon from '../../icons/MessageIcon';
-import NotificationIcon from '../../icons/NotificationIcon';
+import MessageIcon from '../../../icons/MessageIcon';
+import NotificationIcon from '../../../icons/NotificationIcon';
 import styles from './Header.module.css'
 
 const notificationsQuantity = 54

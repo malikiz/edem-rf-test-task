@@ -3,7 +3,7 @@ export interface ICargoType {
 }
 
 export interface ICargo {
-  type: ICargoType[]
+  types: ICargoType[]
 }
 
 export interface Destination {
@@ -17,14 +17,16 @@ export interface IRoute {
 }
 
 export interface IPrice {
-  forHour: number
+  forHour?: number
 }
 
 export interface IOrder {
+  id: string
   name: string
   route: IRoute
   price: IPrice
   mainImage: string
+  cargo: ICargo
 }
 
 export interface IOrderResponse {
