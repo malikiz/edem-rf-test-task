@@ -1,28 +1,33 @@
-export interface CargoType {
+export interface ICargoType {
   name: string
 }
 
-export interface Cargo {
-  type: CargoType[]
+export interface ICargo {
+  type: ICargoType[]
 }
 
 export interface Destination {
   city: string
 }
 
-export interface Route {
+export interface IRoute {
   from: Destination
   to: Destination | undefined
   date: string
 }
 
-export interface Price {
+export interface IPrice {
   forHour: number
 }
 
-export interface Order {
+export interface IOrder {
   name: string
-  route: Route
-  price: Price
+  route: IRoute
+  price: IPrice
   mainImage: string
+}
+
+export interface IOrderResponse {
+  orders: IOrder[]
+  total: number
 }

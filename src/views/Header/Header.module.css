@@ -1,12 +1,20 @@
 .header {
-  display: flex;
+  border-bottom: 1px solid var(--color-stroke-and-border-grey-light-14);
+  background: var(--Color-Semantic-White);
 }
 
-.header-content {
+.header__content {
   width: 100%;
   max-width: var(--layout-width);
   margin: auto;
   padding: 28px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__panel {
+  display: flex;
+  gap: 24px;
 }
 
 .logo {
@@ -24,12 +32,55 @@
   max-width: 159px;
 }
 
-.message-button {
+.message-button,
+.notification-button {
+  background: none;
+  border: none;
   width: 24px;
   height: 24px;
+  cursor: pointer;
+  padding: 0;
 }
 
-.message-button {
-  width: 24px;
-  height: 24px;
+.notification-button {
+  position: relative;
+}
+
+.notification-button__tooltip {
+  padding: 0;
+  width: 22px;
+  height: 16px;
+  background-color: var(--Color-Semantic-Red);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--Color-Semantic-White);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(8px, -4px);
+  font-weight: 500;
+  color: var(--Color-Semantic-White);
+
+}
+
+.user-avatar {
+  border: none;
+  background: var(--Color-System-colors-Gray-Opacity-10);
+  height: 32px;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  color: var(--Color-Text-Primary);
+}
+
+.user-avatar img {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
 }

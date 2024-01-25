@@ -1,6 +1,6 @@
 import http, { IncomingMessage, ServerResponse } from 'http'
 import fs from 'fs'
-import { Order } from '../src/types';
+import { IOrder } from '../src/types';
 
 type Res = ServerResponse<IncomingMessage> & { req: IncomingMessage; }
 
@@ -9,7 +9,7 @@ const PORT = 3002
 const ORIGIN = `http://${DOMAIN}:${PORT}`
 const ORDERS_LENGTH = 103
 
-const createOrderMock = (index: number): Order => {
+const createOrderMock = (index: number): IOrder => {
   return {
     name: `Газель фермер - ${index}`,
     mainImage: '/images/ab8921d404ca009a1b027f8b37375120.png',
@@ -38,7 +38,6 @@ const createOrderListMock = () => {
 
 const orders = createOrderListMock()
 
-
 const createServerHandlers = (res: Res, url: URL) => {
   const handleImageRes = () => {
     // Для тестового задания не стал усложнять и выносить изображения в отдельный сервис
@@ -57,8 +56,11 @@ const createServerHandlers = (res: Res, url: URL) => {
   }
 
   const handleApiResponse = (data: object) => {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.write(JSON.stringify(data));
+    res.writeHead(200, {
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Origin': '*',
+    });
+    res.write(JSON.stringify({ data }));
     res.end();
   }
 
@@ -70,7 +72,7 @@ const createServerHandlers = (res: Res, url: URL) => {
       const start = Number(startParam) || 0
       const end = Number(endParam) || Infinity
 
-      handleApiResponse(orders.slice(start, end))
+      handleApiResponse({ orders: orders.slice(start, end), total: orders.length})
     } else {
       handleApiResponse(orders)
     }

@@ -1,5 +1,5 @@
 import path from "path";
-import { Configuration  } from "webpack";
+import { Configuration } from "webpack";
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 
@@ -46,10 +46,17 @@ const config: Configuration | any = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'public',
-          to: ''
+          from: './public',
+          to: './',
+          globOptions: {
+            ignore: [
+              '**/css/my.css',
+              '**/js/my.js',
+              '**/index.html'
+            ]
+          }
         }
-      ]
+      ],
     })
   ],
 };
