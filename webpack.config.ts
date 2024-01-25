@@ -1,9 +1,12 @@
 import path from "path";
-import { Configuration } from "webpack";
+import { Configuration  } from "webpack";
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import CopyWebpackPlugin from "copy-webpack-plugin";
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
-const config: Configuration = {
+const config: Configuration | any = {
+  devServer: {
+    port: 3000,
+  },
   mode:
     (process.env.NODE_ENV as "production" | "development" | undefined) ??
     "development",
@@ -39,6 +42,14 @@ const config: Configuration = {
       filename: './index.html',
       favicon: './public/favicon.ico',
       manifest: './public/manifest.json',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'public',
+          to: ''
+        }
+      ]
     })
   ],
 };

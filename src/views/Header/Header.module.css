@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+}
+
+.header-content {
+  width: 100%;
+  max-width: var(--layout-width);
+  margin: auto;
+  padding: 28px 0;
+}
+
+.logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo__text {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--Color-Text-Tertiary);
+  max-width: 159px;
+}
+
+.message-button {
+  width: 24px;
+  height: 24px;
+}
+
+.message-button {
+  width: 24px;
+  height: 24px;
+}
