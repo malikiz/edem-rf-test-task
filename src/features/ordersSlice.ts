@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { IFeatureData as IDataFeature } from './feature.types'
-import { IOrder, IOrderResponse } from '../types'
+import { IFeatureData } from './features.types'
+import { IOrderResponse } from '../types'
 import { client } from '../api/client'
 
-const initialState: IDataFeature<IOrderResponse> = {
+const initialState: IFeatureData<IOrderResponse> = {
   data: null,
   isLoading: false,
   errors: undefined,
@@ -48,7 +48,6 @@ export const ordersSlice = createSlice({
       })
   }
 })
-
 
 const ordersReducer = ordersSlice.reducer
 

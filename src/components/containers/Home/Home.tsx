@@ -66,7 +66,11 @@ const Home: FC = () => {
 
       {!orders.isLoading && (
         <div id="edge-for-getting-more-orders" className={styles['edge-for-getting-more-orders']}>
-          {!hasMoreOrders && (<div className={styles['orders-limit-alert']}>поездок больше не найдено</div>)}
+          {!hasMoreOrders && (
+            <div className={styles['orders-limit-alert']}>
+              поездок больше не найдено
+            </div>
+          )}
         </div>
       )}
     </div>

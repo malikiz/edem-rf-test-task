@@ -1,12 +1,6 @@
-import { IFeatureData } from "../features/feature.types"
-
 const API_ORIGIN = 'http://localhost:3002'
 
-interface IApiResult<T> {
-  data: T
-  // TODO: Добавить errors
-}
-
+/* TODO: Добавить обработку ошибок из API */
 export const client = {
   get: async <T> (method: string, params?: Record<string, string>): Promise<T> => {
     const searchParams = new URLSearchParams(params)
