@@ -1,23 +1,26 @@
 import { FC, useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import styles from './Home.module.css'
+import styles from './Home.module.scss'
 import { useAppSelector, useAppDispatch, useDebounce } from '../../../hooks';
 import { fetchMoreOrders } from '../../../features/ordersSlice';
 import OrderSnippet from '../../views/OrderSnippet/OrderSnippet';
 import { plural } from '../../../libs/plural';
 
+const FIRST_STEP = 30
 const STEP = 10
 
 const Home: FC = () => {
   const [page, setPage] = useState(0)
   const orders = useAppSelector(state => state.orders)
   const dispatch = useAppDispatch()
-  const maxPages = Math.ceil((orders.data?.total || 0) / STEP)
+
+  const step = page === 0 ? FIRST_STEP : STEP
+  const maxPages = Math.ceil((orders.data?.total || 0) / step)
   const [debounce] = useDebounce(50)
 
   const hasMoreOrders = page < maxPages
 
   useEffect(() => {
-    dispatch(fetchMoreOrders({ start: STEP * page, end: STEP * (page + 1) }))
+    dispatch(fetchMoreOrders({ start: step * page, end: step * (page + 1) }))
   }, [page])
 
   useEffect(() => {

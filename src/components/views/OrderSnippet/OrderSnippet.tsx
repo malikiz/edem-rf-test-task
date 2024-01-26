@@ -1,4 +1,4 @@
-import styles from './OrderSnippet.module.css'
+import styles from './OrderSnippet.module.scss'
 import { IOrder } from '../../../types';
 import { FC } from 'react';
 import LocationMarkIcon from '../../../icons/LocationMarkIcon';

@@ -1,7 +1,7 @@
 import MessageIcon from '../../../icons/MessageIcon';
 import NotificationIcon from '../../../icons/NotificationIcon';
 import Link from '../../units/Link';
-import styles from './Header.module.css'
+import styles from './Header.module.scss'
 
 const notificationsQuantity = 54
 const userName = 'Оксана'

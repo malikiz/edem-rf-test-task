@@ -19,7 +19,7 @@ const config: Configuration | any = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/i,
         use: [
           "style-loader",
           {
@@ -30,6 +30,7 @@ const config: Configuration | any = {
               },
             },
           },
+          "sass-loader",
         ],
       },
       {
@@ -60,8 +61,6 @@ const config: Configuration | any = {
           to: './',
           globOptions: {
             ignore: [
-              '**/css/my.css',
-              '**/js/my.js',
               '**/index.html'
             ]
           }

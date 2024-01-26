@@ -77,10 +77,10 @@
   overflow: hidden;
   cursor: pointer;
   color: var(--Color-Text-Primary);
-}
 
-.user-avatar img {
-  width: 32px;
-  height: 32px;
-  border-radius: 16px;
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+  }
 }
