@@ -47,24 +47,26 @@ const OrderSnippet: FC<IOrderSnippetProps> = (props) => {
             {weekday}
           </span>
         </div>
-        <div className={styles['cargo-type']}>
-          <BoxIcon />
-          Тип груза:
-          <span className={styles['cargo-type__list']}>
-            {cargoTypesText}
+        {!!cargoTypesText && (
+          <div className={styles['cargo-type']}>
+            <BoxIcon />
+            Тип груза:
+            <span className={styles['cargo-type__list']}>
+              {cargoTypesText}
+              {andMoreLength > 0 && (
+                <>
+                  {' '}
+                  и
+                </>
+              )}
+            </span>
             {andMoreLength > 0 && (
-              <>
-                {' '}
-                и
-              </>
+              <button className={styles['cargo-type__more-button']}>
+                еще {andMoreLength} {plural(['тип', 'типа', 'типов'], andMoreLength)}
+              </button>
             )}
-          </span>
-          {andMoreLength > 0 && (
-            <button className={styles['cargo-type__more-button']}>
-              еще {andMoreLength} {plural(['тип', 'типа', 'типов'], andMoreLength)}
-            </button>
-          )}
-        </div>
+          </div>
+        )}
         {!!order.price.forHour && (
           <div className={styles['price-frame']}>
             <div className={styles['price-frame-for']}>

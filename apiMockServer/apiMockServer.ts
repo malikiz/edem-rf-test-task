@@ -11,8 +11,8 @@ const ORDERS_LENGTH = 103
 
 const createOrderMock = (index: number): IOrder => {
   return {
-    id: `${index}`,
-    name: `Газель фермер - ${index}`,
+    id: `order-${index}`,
+    name: `Газель фермер - ${index + 1}`,
     mainImage: `${ORIGIN}/images/ab8921d404ca009a1b027f8b37375120.png`,
     price: {
       forHour: Math.round(Math.random() * 500),

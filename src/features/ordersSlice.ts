@@ -9,7 +9,7 @@ const initialState: IDataFeature<IOrderResponse> = {
   errors: undefined,
 }
 
-export const fetchOrders = createAsyncThunk<IOrderResponse, { start: number, end: number }>(
+export const fetchMoreOrders = createAsyncThunk<IOrderResponse, { start: number, end: number }>(
   'orders/fetch',
   // if you type your function argument here
   async (params) => {
@@ -24,18 +24,26 @@ export const ordersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchOrders.pending, (state, action) => {
+      .addCase(fetchMoreOrders.pending, (state, action) => {
         state.errors = undefined
-        state.data = null
         state.isLoading = true
       })
-      .addCase(fetchOrders.fulfilled, (state, action) => {
-        state.data = action.payload
+      .addCase(fetchMoreOrders.fulfilled, (state, action) => {
+        state.errors = undefined
+
+        for (const order of action.payload.orders) {
+          if (!state.data) {
+            state.data = action.payload
+          } else if (!state.data.orders.some(stateOrder => stateOrder.id === order.id)) {
+            state.data.orders.push(order)
+          }
+        }
+
+        state.isLoading = false
       })
       /*  TODO: обработать */
-      .addCase(fetchOrders.rejected, (state, action) => {
+      .addCase(fetchMoreOrders.rejected, (state, action) => {
         state.errors = [action.error.name + ': ' + (action.error.message || 'Unknown error')]
-        state.data = null
         state.isLoading = false
       })
   }

@@ -1,20 +1,23 @@
 import MessageIcon from '../../../icons/MessageIcon';
 import NotificationIcon from '../../../icons/NotificationIcon';
+import Link from '../../units/Link';
 import styles from './Header.module.css'
 
 const notificationsQuantity = 54
 const userName = 'Оксана'
 
 const Header = () => {
+  console.log('render header');
+
   return (
     <div className={styles.header}>
       <div className={styles['header__content']}>
-        <a href="/" className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           <img src="/icons/logo.svg" alt="едем.рф" />
           <span className={styles.logo__text}>
             Лучший способ путешествовать дешевле
           </span>
-        </a>
+        </Link>
         <div className={styles.header__panel}>
           <button className={styles['message-button']}>
             <MessageIcon />
